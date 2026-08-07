@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,43 +16,54 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { typedndarray, float64ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Perform an in-place copy of elements within a one-dimensional double-precision floating-point ndarray.
+* Performs an in-place copy of elements within a one-dimensional double-precision floating-point ndarray.
 *
-* @module @stdlib/blas-ext-base-ndarray-dcopy-within
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray specifying a target index.
+*     -   a zero-dimensional ndarray specifying a source start index (inclusive).
+*     -   a zero-dimensional ndarray specifying a source end index (exclusive).
+*     -   a one-dimensional workspace ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 * var zeros = require( '@stdlib/ndarray-zeros' );
-* var dcopyWithin = require( '@stdlib/blas-ext-base-ndarray-dcopy-within' );
 *
 * var x = new Float64Vector( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
 * var target = scalar2ndarray( 3, {
-*     'dtype': 'generic'
+*    'dtype': 'generic'
 * });
 * var start = scalar2ndarray( 1, {
-*     'dtype': 'generic'
+*    'dtype': 'generic'
 * });
 * var end = scalar2ndarray( 4, {
-*     'dtype': 'generic'
+*    'dtype': 'generic'
 * });
 *
 * var w = zeros( [ 6 ], {
-*     'dtype': 'float64'
+*    'dtype': 'float64'
 * });
 *
 * var out = dcopyWithin( [ x, target, start, end, w ] );
 * // returns <ndarray>[ 1.0, 2.0, 3.0, 2.0, 3.0, 4.0 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function dcopyWithin( arrays: [ float64ndarray, typedndarray<number>, typedndarray<number>, typedndarray<number>, float64ndarray ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = dcopyWithin;
